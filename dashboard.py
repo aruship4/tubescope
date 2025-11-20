@@ -1,4 +1,103 @@
 import streamlit as st
 import pandas as pd
 
-st.title("TubeScope Project")
+
+st.set_page_config(
+    page_title="Tubescope Dashboard",
+    page_icon="📊",
+    layout="wide"
+)
+
+
+#sidebar
+st.sidebar.title("Tubescope Dashboard")
+st.sidebar.write("Upload your dataset to begin.")
+
+uploaded_file = st.sidebar.file_uploader("Upload CSV", type=["csv"])
+
+# Load data if uploaded
+df = None
+if uploaded_file:
+    df = pd.read_csv(uploaded_file)
+
+# Sidebar Page Navigation
+page = st.sidebar.radio(
+    "Navigation",
+    ["Home", "Exploration", "Random Forest Model", "Survival Analysis"]
+)
+
+
+# ------------------------------
+# HOME PAGE
+# ------------------------------
+if page == "Home":
+    st.title("📺 Tubescope Overview")
+    st.write("A dashboard for analyzing YouTube videos, synthetic media, and model outputs.")
+
+    st.subheader("Current Dataset Status")
+    if df is None:
+        st.info("No dataset uploaded yet.")
+    else:
+        st.success("Dataset loaded!")
+        st.write("Rows:", df.shape[0])
+        st.write("Columns:", df.shape[1])
+        st.dataframe(df.head())
+
+
+# ------------------------------
+# EXPLORATION PAGE
+# ------------------------------
+elif page == "Exploration":
+    st.title("🔎 Data Exploration")
+
+    if df is None:
+        st.warning("Please upload a dataset first.")
+    else:
+        st.subheader("Dataset Preview")
+        st.dataframe(df.head())
+
+        st.subheader("Column Information")
+        st.write(df.dtypes)
+
+        st.subheader("Missing Values")
+        st.write(df.isna().sum())
+
+        st.info("Plots will be added later.")
+
+
+# ------------------------------
+# RANDOM FOREST PAGE
+# ------------------------------
+elif page == "Random Forest Model":
+    st.title("🌲 Random Forest Classifier")
+
+    if df is None:
+        st.warning("Please upload a dataset to train or evaluate a model.")
+    else:
+        st.subheader("Model Inputs")
+        st.write("Feature selection, training, and predictions will be added later.")
+
+        with st.expander("Model Settings"):
+            n_estimators = st.slider("Number of Trees", 10, 300, 100)
+            max_depth = st.slider("Max Depth", 2, 30, 10)
+            st.write("Model settings chosen.")
+
+        st.info("The Random Forest implementation will be added later.")
+
+
+# ------------------------------
+# SURVIVAL ANALYSIS PAGE
+# ------------------------------
+elif page == "Survival Analysis":
+    st.title("⏳ Survival Analysis (Kaplan-Meier)")
+
+    if df is None:
+        st.warning("Please upload a dataset to run survival models.")
+    else:
+        st.subheader("Survival Model Inputs")
+        st.write("Specify the duration and event columns below.")
+
+        duration_col = st.selectbox("Duration Column", options=df.columns)
+        event_col = st.selectbox("Event Column", options=df.columns)
+
+        st.info("Kaplan-Meier plots and model will be added later.")
