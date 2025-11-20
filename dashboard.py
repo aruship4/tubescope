@@ -32,7 +32,9 @@ page = st.sidebar.radio(
 # ------------------------------
 if page == "Home":
     st.title("📺 Tubescope Overview")
-    st.write("A dashboard for analyzing YouTube videos, synthetic media, and model outputs.")
+    st.write("TubeScope explores what makes YouTube videos go viral — and how long that virality lasts. " \
+    "By tracking daily trending videos using the YouTube Data API, we analyze how long videos from different content categories "
+    "(like Music, Gaming, or News) stay on the trending list, visualize their popularity curves, and even predict how long new videos might trend..")
 
     st.subheader("Current Dataset Status")
     if df is None:
