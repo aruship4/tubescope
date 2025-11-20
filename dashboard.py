@@ -26,10 +26,6 @@ page = st.sidebar.radio(
     ["Home", "Exploration", "Random Forest Model", "Survival Analysis"]
 )
 
-
-# ------------------------------
-# HOME PAGE
-# ------------------------------
 if page == "Home":
     st.title("📺 Tubescope Overview")
     st.write("TubeScope explores what makes YouTube videos go viral — and how long that virality lasts. " \
@@ -45,10 +41,6 @@ if page == "Home":
         st.write("Columns:", df.shape[1])
         st.dataframe(df.head())
 
-
-# ------------------------------
-# EXPLORATION PAGE
-# ------------------------------
 elif page == "Exploration":
     st.title("🔎 Data Exploration")
 
@@ -67,11 +59,8 @@ elif page == "Exploration":
         st.info("Plots will be added later.")
 
 
-# ------------------------------
-# RANDOM FOREST PAGE
-# ------------------------------
 elif page == "Random Forest Model":
-    st.title("🌲 Random Forest Classifier")
+    st.title(" Random Forest Classifier")
 
     if df is None:
         st.warning("Please upload a dataset to train or evaluate a model.")
@@ -87,9 +76,6 @@ elif page == "Random Forest Model":
         st.info("The Random Forest implementation will be added later.")
 
 
-# ------------------------------
-# SURVIVAL ANALYSIS PAGE
-# ------------------------------
 elif page == "Survival Analysis":
     st.title("⏳ Survival Analysis (Kaplan-Meier)")
 
