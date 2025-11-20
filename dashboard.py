@@ -23,7 +23,7 @@ if uploaded_file:
 # Sidebar Page Navigation
 page = st.sidebar.radio(
     "Navigation",
-    ["Home", "Exploration", "Random Forest Model", "Survival Analysis"]
+    ["Home", "Plots", "Exploration", "Random Forest Model", "Survival Analysis"]
 )
 
 if page == "Home":
@@ -40,6 +40,13 @@ if page == "Home":
         st.write("Rows:", df.shape[0])
         st.write("Columns:", df.shape[1])
         st.dataframe(df.head())
+
+
+elif page == "Plots":
+    st.image("most_common_tags-2.png", caption = "Most Common Video Tags")
+    st.image("rank_trajectory.png", caption = "Average Rank Trajectory")
+
+
 
 elif page == "Exploration":
     st.title("🔎 Data Exploration")
@@ -89,3 +96,4 @@ elif page == "Survival Analysis":
         event_col = st.selectbox("Event Column", options=df.columns)
 
         st.info("Kaplan-Meier plots and model will be added later.")
+
