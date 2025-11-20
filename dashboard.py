@@ -45,10 +45,10 @@ if page == "Home":
 elif page == "Plots":
     st.title("📊 Plots")
 
-    st.image("most_common_tags-2.png", width = 550, caption = "Most Common Video Tags")
-    st.image("rank_trajectory.png",  width = 550, caption = "Average Rank Trajectory")
-    st.image("top_categories_by_views.png",  width = 550, caption = "Top Categories by Views")
-    st.image("views_per_day_vs_age.png",  width = 550, caption = "Views Per Day vs. Days Since Posted")
+    st.image("most_common_tags-2.png", width = 650, caption = "Most Common Video Tags")
+    st.image("rank_trajectory.png",  width = 650, caption = "Average Rank Trajectory")
+    st.image("top_categories_by_views.png",  width = 650, caption = "Top Categories by Views")
+    st.image("views_per_day_vs_age.png",  width = 650, caption = "Views Per Day vs. Days Since Posted")
 
 
 
