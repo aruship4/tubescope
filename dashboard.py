@@ -101,8 +101,8 @@ elif page == "Models":
         model3 = pickle.load(file3)
 
     st.success("Models loaded successfully!")
-    #st.write(model1)
-    #st.write(model2)
+    st.write(model1)
+    st.write(model2)
     st.write(model3)
     
     
