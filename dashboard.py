@@ -63,6 +63,7 @@ elif page == "Plots":
 
 elif page == "Models":
 
+    '''
     st.title("Models")
 
     # Path to your pickle files
@@ -93,13 +94,8 @@ elif page == "Models":
     except Exception as e:
         st.error(f"Failed to load models: {e}")
     '''
+    
     st.title("Models")
-
-    category_encoding_file = "category_encoder.pkl"
-
-    model_columns_file = "model_columns.pkl"
-
-    viral_prediction_file = "viral_prediction_model.pkl"
 
     with open("category_encoder.pkl", 'rb') as file1:
         model1 = pickle.load(file1)
@@ -107,8 +103,13 @@ elif page == "Models":
         model2 = pickle.load(file2)
     with open("viral_prediction_model.pkl", 'rb') as file3:
         model3 = pickle.load(file3)
+
+    st.success("Models loaded successfully!")
+    st.write(model1)
+    st.write(model2)
+    st.write(model3)
     
-    '''
+    
 
 
 
