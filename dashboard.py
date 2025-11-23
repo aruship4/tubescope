@@ -42,6 +42,35 @@ if page == "Home":
 elif page == "Plots":
     st.title("📊 Plots")
 
+
+    st.subheader("Kaplan-Meier Category Survival Curve")
+    st.image("KM_category_survival_curve.png", width = 650, caption = (
+            "This chart uses Kaplan-Meier (explain what it is and purpose)"
+            "to predict how long a video lasts"
+        )
+    )
+
+    st.subheader("Kaplan-Meier Survival Curve")
+    st.image("KM_survival_curve.png", width = 650, caption = (
+        "This chart uses Kaplan-Meier (explain what it is and purpose)"
+        "to predict how long a video lasts"
+        )
+    )
+
+    st.subheader("Confusion Matrix")
+    st.image("confusion_matrix.png", width = 650, caption = (
+        "x"
+        )
+    )
+
+    st.subheader("Top 15 Features")
+    st.image("feature_importance.png", width = 650, caption = (
+        "This predicts ___"
+        )
+    )
+
+
+
     st.header( "Most Common Video Tags")
     st.image("most_common_tags-2.png", width = 650, caption = (
             "This chart highlights the most frequently used tags among trending YouTube videos, "
