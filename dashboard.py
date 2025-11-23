@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
+from pathlib import Path
 
 
 st.set_page_config(
@@ -29,21 +30,14 @@ page = st.sidebar.radio(
 
 if page == "Home":
     st.header("DS3 Projects Fall 2025")
-    st.header("Project Members: Yra Climaco, Vivek Moorkoth, Arushi Patra, Nathaniel Trueba, Project Mentor: Vedant Vardhaan")
+    st.write("Project Members: Yra Climaco, Vivek Moorkoth, Arushi Patra, Nathaniel Trueba, Project Mentor: Vedant Vardhaan")
     st.title("📺 Tubescope Overview")
     st.write("TubeScope explores what makes YouTube videos go viral — and how long that virality lasts. " \
     "By tracking daily trending videos using the YouTube Data API, we analyze how long videos from different content categories "
     "(like Music, Gaming, or News) stay on the trending list, visualize their popularity curves, and even predict how long new videos might trend..")
 
-    st.subheader("Current Dataset Status")
-    if df is None:
-        st.info("No dataset uploaded yet.")
-    else:
-        st.success("Dataset loaded!")
-        st.write("Rows:", df.shape[0])
-        st.write("Columns:", df.shape[1])
-        st.dataframe(df.head())
-
+    st.subheader("Look through our findings, data, and models through the Navigation section!")
+    
 
 elif page == "Plots":
     st.title("📊 Plots")
@@ -68,6 +62,37 @@ elif page == "Plots":
 
 
 elif page == "Models":
+
+    st.title("Models")
+
+    # Path to your pickle files
+    base_path = Path(__file__).parent  # ensures relative path works
+
+    category_encoding_file = base_path / "category_encoder.pkl"
+    model_columns_file = base_path / "model_columns.pkl"
+    viral_prediction_file = base_path / "viral_prediction_model.pkl"
+
+    # Load the pickle files safely
+    try:
+        with open(category_encoding_file, 'rb') as f:
+            model1 = pickle.load(f)
+        with open(model_columns_file, 'rb') as f:
+            model2 = pickle.load(f)
+        with open(viral_prediction_file, 'rb') as f:
+            model3 = pickle.load(f)
+        
+        st.success("Models loaded successfully!")
+        st.write("✅ Category Encoder:", model1)
+        st.write("✅ Model Columns:", model2)
+        st.write("✅ Viral Prediction Model:", model3)
+
+    except ModuleNotFoundError as e:
+        st.error(f"Cannot load model: missing module. {e}")
+    except FileNotFoundError as e:
+        st.error(f"Pickle file not found: {e}")
+    except Exception as e:
+        st.error(f"Failed to load models: {e}")
+    '''
     st.title("Models")
 
     category_encoding_file = "category_encoder.pkl"
@@ -83,6 +108,7 @@ elif page == "Models":
     with open("viral_prediction_model.pkl", 'rb') as file3:
         model3 = pickle.load(file3)
     
+    '''
 
 
 
