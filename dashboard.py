@@ -63,38 +63,6 @@ elif page == "Plots":
 
 elif page == "Models":
 
-    '''
-    st.title("Models")
-
-    # Path to your pickle files
-    base_path = Path(__file__).parent  # ensures relative path works
-
-    category_encoding_file = base_path / "category_encoder.pkl"
-    model_columns_file = base_path / "model_columns.pkl"
-    viral_prediction_file = base_path / "viral_prediction_model.pkl"
-
-    # Load the pickle files safely
-    try:
-        with open(category_encoding_file, 'rb') as f:
-            model1 = pickle.load(f)
-        with open(model_columns_file, 'rb') as f:
-            model2 = pickle.load(f)
-        with open(viral_prediction_file, 'rb') as f:
-            model3 = pickle.load(f)
-        
-        st.success("Models loaded successfully!")
-        st.write("✅ Category Encoder:", model1)
-        st.write("✅ Model Columns:", model2)
-        st.write("✅ Viral Prediction Model:", model3)
-
-    except ModuleNotFoundError as e:
-        st.error(f"Cannot load model: missing module. {e}")
-    except FileNotFoundError as e:
-        st.error(f"Pickle file not found: {e}")
-    except Exception as e:
-        st.error(f"Failed to load models: {e}")
-    '''
-    
     st.title("Models")
 
     with open("category_encoder.pkl", 'rb') as file1:
