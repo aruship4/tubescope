@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import pickle
 
 
 st.set_page_config(
@@ -23,7 +24,7 @@ if uploaded_file:
 # Sidebar Page Navigation
 page = st.sidebar.radio(
     "Navigation",
-    ["Home", "Plots", "Exploration", "Random Forest Model", "Survival Analysis"]
+    ["Home", "Models", "Plots", "Exploration", "Random Forest Model", "Survival Analysis"]
 )
 
 if page == "Home":
@@ -46,7 +47,11 @@ elif page == "Plots":
     st.title("📊 Plots")
 
     st.header( "Most Common Video Tags")
-    st.image("most_common_tags-2.png", width = 650, caption = "Most Common Video Tags")
+    st.image("most_common_tags-2.png", width = 650, caption = (
+            "This chart highlights the most frequently used tags among trending YouTube videos, "
+            "revealing which themes, keywords, and topics creators use to optimize discoverability."
+        )
+    )
 
     st.header("Average Rank Trajectory")
     st.image("rank_trajectory.png",  width = 650, caption = "Average Rank Trajectory")
@@ -57,6 +62,25 @@ elif page == "Plots":
     st.header( "Views Per Day vs. Days Since Posted")
     st.image("views_per_day_vs_age.png",  width = 650, caption = "Views Per Day vs. Days Since Posted")
 
+    uploaded_file = st.file_uploader("Choose a .pkl file", type=["pkl"])
+
+
+elif page == "Models":
+    st.title("Models")
+
+    category_encoding_file = "category_encoder.pkl"
+
+    model_columns_file = "model_columns.pkl"
+
+    viral_prediction_file = "viral_prediction_model.pkl"
+
+    with open("category_encoder.pkl", 'rb') as file1:
+        model1 = pickle.load(file1)
+    with open("model_columns.pkl", 'rb') as file2:
+        model2 = pickle.load(file2)
+    with open("viral_prediction_model.pkl", 'rb') as file3:
+        model3 = pickle.load(file3)
+    
 
 
 
