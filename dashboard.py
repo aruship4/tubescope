@@ -11,17 +11,6 @@ st.set_page_config(
 )
 
 
-#sidebar
-st.sidebar.title("Tubescope Dashboard")
-st.sidebar.write("Upload your dataset to begin.")
-
-uploaded_file = st.sidebar.file_uploader("Upload CSV", type=["csv"])
-
-# Load data if uploaded
-df = None
-if uploaded_file:
-    df = pd.read_csv(uploaded_file)
-
 # Sidebar Page Navigation
 page = st.sidebar.radio(
     "Navigation",
