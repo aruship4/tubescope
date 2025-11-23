@@ -28,6 +28,8 @@ page = st.sidebar.radio(
 )
 
 if page == "Home":
+    st.header("DS3 Projects Fall 2025")
+    st.header("Project Members: Yra Climaco, Vivek Moorkoth, Arushi Patra, Nathaniel Trueba, Project Mentor: Vedant Vardhaan")
     st.title("📺 Tubescope Overview")
     st.write("TubeScope explores what makes YouTube videos go viral — and how long that virality lasts. " \
     "By tracking daily trending videos using the YouTube Data API, we analyze how long videos from different content categories "
